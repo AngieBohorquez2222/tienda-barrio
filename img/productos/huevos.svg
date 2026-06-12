@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#dcfce7"/>
+      <stop offset="1" stop-color="#86efac"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#g)"/>
+  <rect x="200" y="180" width="240" height="90" rx="16" fill="#166534" opacity="0.9"/>
+  <ellipse cx="250" cy="165" rx="24" ry="31" fill="#f8fafc"/>
+  <ellipse cx="320" cy="155" rx="24" ry="31" fill="#f8fafc"/>
+  <ellipse cx="390" cy="165" rx="24" ry="31" fill="#f8fafc"/>
+  <text x="320" y="235" text-anchor="middle" font-size="24" font-family="Verdana, sans-serif" fill="#dcfce7">Huevos x12</text>
+</svg>
