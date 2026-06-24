@@ -21,9 +21,9 @@ $cartCount = count($_SESSION['cart'] ?? []);
     <!-- Título de la página -->
     <title>Mini Tienda de Barrio</title>
     <!-- Bootstrap CSS desde CDN local -->
-    <link rel="stylesheet" href="/tienda-de-barrio/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/tienda-barrio/css/bootstrap.min.css">
     <!-- Estilos personalizados del proyecto -->
-    <link rel="stylesheet" href="/tienda-de-barrio/css/styles.css">
+    <link rel="stylesheet" href="/tienda-barrio/css/styles.css">
 </head>
 
 <body>
@@ -39,9 +39,9 @@ $cartCount = count($_SESSION['cart'] ?? []);
             <!-- Navegación principal -->
             <nav class="d-flex flex-wrap gap-2 align-items-center">
                 <!-- Botón catálogo - página principal -->
-                <a class="btn btn-light btn-sm" href="/tienda-de-barrio/index.php">Catalogo</a>
+                <a class="btn btn-light btn-sm" href="/tienda-barrio/index.php">Catalogo</a>
                 <!-- Botón carrito con contador en badge -->
-                <a class="btn btn-outline-light btn-sm position-relative cart-btn" href="/tienda-de-barrio/carrito.php" title="Ver carrito" aria-label="Ver carrito de compras">
+                <a class="btn btn-outline-light btn-sm position-relative cart-btn" href="/tienda-barrio/carrito.php" title="Ver carrito" aria-label="Ver carrito de compras">
                     <!-- Icono SVG del carrito -->
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -54,23 +54,23 @@ $cartCount = count($_SESSION['cart'] ?? []);
                     <?php endif; ?>
                 </a>
                 <!-- Botón de seguimiento de pedidos -->
-                <a class="btn btn-outline-light btn-sm" href="/tienda-de-barrio/seguimiento.php">Seguimiento</a>
+                <a class="btn btn-outline-light btn-sm" href="/tienda-barrio/seguimiento.php">Seguimiento</a>
                 <!-- Si es admin logueado: muestra menú admin y salir -->
                 <?php if (is_admin_logged_in()): ?>
-                    <a class="btn btn-warning btn-sm" href="/tienda-de-barrio/admin/productos.php">Admin Productos</a>
-                    <a class="btn btn-light btn-sm" href="/tienda-de-barrio/admin/pedidos.php">Admin Pedidos</a>
-                    <a class="btn btn-outline-light btn-sm" href="/tienda-de-barrio/admin/logout.php">Salir (<?= htmlspecialchars(admin_name()) ?>)</a>
+                    <a class="btn btn-warning btn-sm" href="/tienda-barrio/admin/productos.php">Admin Productos</a>
+                    <a class="btn btn-light btn-sm" href="/tienda-barrio/admin/pedidos.php">Admin Pedidos</a>
+                    <a class="btn btn-outline-light btn-sm" href="/tienda-barrio/admin/logout.php">Salir (<?= htmlspecialchars(admin_name()) ?>)</a>
                 <!-- Si no es admin: muestra botón de login admin -->
                 <?php else: ?>
-                    <a class="btn btn-warning btn-sm" href="/tienda-de-barrio/admin/login.php">Ingresar Admin</a>
+                    <a class="btn btn-warning btn-sm" href="/tienda-barrio/admin/login.php">Ingresar Admin</a>
                 <?php endif; ?>
                 <!-- Si es usuario logueado: muestra botón salir -->
                 <?php if (is_user_logged_in()): ?>
-                    <a class="btn btn-outline-light btn-sm" href="/tienda-de-barrio/logout.php">Salir (<?= htmlspecialchars(user_name()) ?>)</a>
+                    <a class="btn btn-outline-light btn-sm" href="/tienda-barrio/logout.php">Salir (<?= htmlspecialchars(user_name()) ?>)</a>
                 <!-- Si no es usuario: muestra login y registro -->
                 <?php else: ?>
-                    <a class="btn btn-outline-light btn-sm" href="/tienda-de-barrio/login.php">Ingresar</a>
-                    <a class="btn btn-outline-light btn-sm" href="/tienda-de-barrio/registro.php">Registrarse</a>
+                    <a class="btn btn-outline-light btn-sm" href="/tienda-barrio/login.php">Ingresar</a>
+                    <a class="btn btn-outline-light btn-sm" href="/tienda-barrio/registro.php">Registrarse</a>
                 <?php endif; ?>
             </nav>
         </div>

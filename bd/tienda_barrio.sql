@@ -18,7 +18,7 @@ USE tienda_barrio;
 CREATE TABLE productos (
   id INT AUTO_INCREMENT PRIMARY KEY,               -- Identificador único
   nombre VARCHAR(120) NOT NULL,                    -- Nombre del producto
-  imagen VARCHAR(255) NOT NULL DEFAULT '/tienda-de-barrio/img/productos/default.svg', -- Imagen del producto
+  imagen VARCHAR(255) NOT NULL DEFAULT '/tienda-barrio/img/productos/default.svg', -- Imagen del producto
   precio DECIMAL(10,2) NOT NULL CHECK (precio >= 0), -- Precio (no puede ser negativo)
   stock INT(11) NOT NULL CHECK (stock >= 0),       -- Cantidad disponible
   creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación

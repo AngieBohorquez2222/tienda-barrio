@@ -93,7 +93,7 @@ function require_admin_auth(): void
 
     // Si no está logueado, muestra mensaje y redirige al login
     set_flash('warning', 'Debes iniciar sesion para administrar productos.');
-    redirect('/tienda-de-barrio/admin/login.php');
+    redirect('/tienda-barrio/admin/login.php');
 }
 
 // Sube una imagen de producto al servidor
@@ -151,7 +151,7 @@ function upload_product_image(string $fieldName = 'imagen_file'): ?string
     }
 
     // Retorna la URL pública de la imagen
-    return '/tienda-de-barrio/img/productos/uploads/' . $fileName;
+    return '/tienda-barrio/img/productos/uploads/' . $fileName;
 }
 
 // Envía notificación por WhatsApp al cambiar estado del pedido

@@ -20,20 +20,20 @@ Proyecto base para practicar:
 
 ## 3) Ejecutar proyecto
 
-1. Copiar la carpeta en `C:/xampp/htdocs/tienda-de-barrio`
+1. Copiar la carpeta en `C:/xampp/htdocs/tienda-barrio`
 2. Iniciar Apache y MySQL en XAMPP
-3. Abrir: `http://localhost/tienda-de-barrio/index.php`
+3. Abrir: `http://localhost/tienda-barrio/index.php`
 
 ## 4) Rutas principales
 
-- Catalogo: `/tienda-de-barrio/index.php`
-- Carrito: `/tienda-de-barrio/carrito.php`
-- Seguimiento de pedidos: `/tienda-de-barrio/seguimiento.php`
-- Registro de usuarios: `/tienda-de-barrio/registro.php`
-- Login usuario: `/tienda-de-barrio/login.php`
-- Login admin: `/tienda-de-barrio/admin/login.php`
-- Admin productos: `/tienda-de-barrio/admin/productos.php`
-- Admin pedidos: `/tienda-de-barrio/admin/pedidos.php`
+- Catalogo: `/tienda-barrio/index.php`
+- Carrito: `/tienda-barrio/carrito.php`
+- Seguimiento de pedidos: `/tienda-barrio/seguimiento.php`
+- Registro de usuarios: `/tienda-barrio/registro.php`
+- Login usuario: `/tienda-barrio/login.php`
+- Login admin: `/tienda-barrio/admin/login.php`
+- Admin productos: `/tienda-barrio/admin/productos.php`
+- Admin pedidos: `/tienda-barrio/admin/pedidos.php`
 
 ## 5) Credenciales admin iniciales
 

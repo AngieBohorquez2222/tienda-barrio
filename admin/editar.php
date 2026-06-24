@@ -1,52 +1,70 @@
 <?php
-
+// Activa el modo estricto de tipos para mayor seguridad
 declare(strict_types=1);
 
+// Incluye las funciones auxiliares del proyecto
 require_once __DIR__ . '/../includes/functions.php';
+// Requiere autenticación de administrador, redirige al login si no está logueado
 require_admin_auth();
 
+// Incluye el header con navbar y estructura HTML básica
 require_once __DIR__ . '/../includes/header.php';
 
+// Obtiene el ID del producto desde GET o POST (GET para cargar, POST para guardar)
 $id = (int) ($_GET['id'] ?? $_POST['id'] ?? 0);
+// Busca el producto en la base de datos
 $stmt = db()->prepare('SELECT id, nombre, imagen, precio, stock FROM productos WHERE id = ?');
 $stmt->execute([$id]);
 $producto = $stmt->fetch();
 
+// Si el producto no existe, muestra error y redirige
 if (!$producto) {
     set_flash('danger', 'Producto no encontrado.');
-    redirect('/tienda-de-barrio/admin/productos.php');
+    redirect('/tienda-barrio/admin/productos.php');
 }
 
+// Procesa el formulario cuando se envía por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtiene nombre del producto desde el formulario
     $nombre = trim($_POST['nombre'] ?? '');
+    // Obtiene URL de imagen desde el formulario
     $imagen = trim($_POST['imagen'] ?? '');
+    // Obtiene precio del producto (decimal) desde el formulario
     $precio = (float) ($_POST['precio'] ?? 0);
+    // Obtiene stock (cantidad disponible) desde el formulario
     $stock = (int) ($_POST['stock'] ?? 0);
 
+    // Intenta subir una nueva imagen si el usuario la adjuntó
     try {
         $imagenSubida = upload_product_image('imagen_file');
+        // Si se subió archivo, reemplaza la URL de imagen con la nueva
         if ($imagenSubida !== null) {
             $imagen = $imagenSubida;
         }
     } catch (Throwable $e) {
+        // Muestra error si la imagen no pudo cargarse
         set_flash('danger', $e->getMessage());
-        redirect('/tienda-de-barrio/admin/editar.php?id=' . $id);
+        redirect('/tienda-barrio/admin/editar.php?id=' . $id);
     }
 
+    // Si no hay imagen, usa la imagen por defecto
     if ($imagen === '') {
-        $imagen = '/tienda-de-barrio/img/productos/default.svg';
+        $imagen = '/tienda-barrio/img/productos/default.svg';
     }
 
+    // Valida que los datos sean válidos antes de actualizar
     if ($nombre === '' || $precio < 0 || $stock < 0) {
         set_flash('danger', 'Datos invalidos.');
-        redirect('/tienda-de-barrio/admin/editar.php?id=' . $id);
+        redirect('/tienda-barrio/admin/editar.php?id=' . $id);
     }
 
+    // Actualiza el producto en la base de datos
     $update = db()->prepare('UPDATE productos SET nombre = ?, imagen = ?, precio = ?, stock = ? WHERE id = ?');
     $update->execute([$nombre, $imagen, $precio, $stock, $id]);
 
+    // Mensaje de éxito y redirección a la lista de productos
     set_flash('success', 'Producto actualizado correctamente.');
-    redirect('/tienda-de-barrio/admin/productos.php');
+    redirect('/tienda-barrio/admin/productos.php');
 }
 ?>
 
@@ -79,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="col-12 d-flex gap-2">
             <button class="btn btn-warning" type="submit">Actualizar</button>
-            <a href="/tienda-de-barrio/admin/productos.php" class="btn btn-outline-secondary">Cancelar</a>
+            <a href="/tienda-barrio/admin/productos.php" class="btn btn-outline-secondary">Cancelar</a>
         </div>
     </form>
 </div>

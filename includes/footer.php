@@ -9,7 +9,7 @@
 </footer>
 
 <!-- Script de Bootstrap para funcionalidades JS -->
-<script src="/tienda-de-barrio/js/bootstrap.bundle.min.js"></script>
+<script src="/tienda-barrio/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
