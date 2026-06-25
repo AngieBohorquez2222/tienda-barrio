@@ -9,7 +9,7 @@ require_once __DIR__ . '/../config.php';
 function money(float $value): string
 {
     // Usa number_format con 0 decimales, coma para miles y punto para decimales (estilo COP), añade el símbolo $ al inicio y lo retorna
-    return '$' . number_format($value, 0, ',', '.');
+   return '$' . number_format($value, 0, ',', '.');
 }
 
 // Almacena un mensaje temporal (flash) en la sesión global para mostrarlo una sola vez en la interfaz
@@ -17,7 +17,7 @@ function set_flash(string $type, string $message): void
 {
     // Crea o sobreescribe un array asociativo dentro del índice 'flash' de la variable de sesión $_SESSION
     $_SESSION['flash'] = [
-        'type' => $type,       // Define el tipo de alerta (ej: 'danger', 'success', 'warning')
+        'type' => $type,       // Define el tipo de alerta (ej: 'danger'peligro, 'success'exito, 'warning'advetencia)
         'message' => $message, // Define el texto del mensaje que verá el usuario
     ];
 }
@@ -36,7 +36,7 @@ function get_flash(): ?array
     // Borra de forma definitiva el mensaje de la sesión global mediante la función unset
     unset($_SESSION['flash']);
 
-    // Retorna el array con el mensaje que fue rescatado
+    // Retorna el array (arreglo) con el mensaje que fue rescatado
     return $flash;
 }
 
