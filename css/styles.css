@@ -1,30 +1,43 @@
 :root {
-    --brand-primary: #c2410c;
-    --brand-secondary: #f59e0b;
-    --brand-accent: #ea580c;
-    --brand-success: #d97706;
-    --brand-danger: #dc2626;
-    --brand-warning: #facc15;
-    --brand-info: #f97316;
-    --bg-soft: #ffedd5;
-    --text-main: #1e293b;
+    --brand-primary: #e55820; /* Color principal de la marca (Naranja intenso) */
+    -brand-secondary: #f59e0b;  /* Color secundario de la marca (Ámbar) */
+    --brand-accent: #ea580c;     /* Color de acento (Naranja oscuro) */
+    --brand-success: #d97706;    /* Color para estados de éxito (Marrón dorado/Ámbar oscuro) */
+    --brand-danger: #dc2626;     /* Color para estados de error/peligro (Rojo) */
+    --brand-warning: #facc15;    /* Color para advertencias (Amarillo) */
+    --brand-info: #f97316;       /* Color para información (Naranja claro) */
+    --bg-soft: #ffedd5;          /* Color de fondo suave (Tono naranja/crema muy claro) */
+    --text-main: #1e293b;        /* Color principal para el texto (Azul pizarra oscuro) */
 }
 
+/* ==========================================
+   ESTILOS GENERALES DEL CUERPO (BODY)
+}
+
+/* Fondo con un degradado diagonal (135 grados) que pasa por 4 tonos crema y naranjas */
 body {
     background: linear-gradient(135deg, #ffedd5 0%, #fef3c7 30%, #fffbeb 70%, #fff7ed 100%);
-    color: var(--text-main);
-    min-height: 100vh;
+    color: var(--text-main); /* Aplica el color de texto principal definido en las variables */
+    min-height: 100vh; /* Fuerza al cuerpo a ocupar como mínimo el 100% de la altura de la pantalla */
+    /* Define la tipografía del sitio, priorizando Segoe UI y cayendo en fuentes sans-serif por defecto */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+   /* ==========================================
+   CABECERA PRINCIPAL (HERO HEADER)
+   ========================================== */ 
+
+
 
 .hero-header {
-    background: linear-gradient(130deg, #c2410c 0%, #ea580c 40%, #f97316 100%);
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 5px solid var(--brand-secondary);
+    /* Degradado de fondo en ángulo de 130 grados con tres tonos de naranja */
+    background: linear-gradient(130deg, #c7491b 0%, #ea580c 40%, #f94b16 100%);
+    color: #ffffff;              /* Texto de color blanco */
+    position: relative;          /* Permite posicionar elementos hijos de forma absoluta respecto a esta cabecera */
+    overflow: hidden;            /* Oculta cualquier elemento interno (como círculos decorativos) que sobresalga de los límites */
+    border-bottom: 5px solid var(--brand-secondary); /* Añade un borde inferior grueso usando el color secundario */
 }
 
+/* Elemento decorativo circular ubicado en la parte superior derecha */
 .hero-header::after {
     content: '';
     position: absolute;
@@ -36,265 +49,594 @@ body {
     top: -140px;
     animation: float 20s infinite ease-in-out;
 }
-
+ /* Crea un pseudo-elemento vacío */
 .hero-header::before {
-    content: '';
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(245,158,11,0.2), transparent);
+    content: '';  /* Crea un pseudo-elemento vacío */
+    position: absolute;  /* Posicionamiento absoluto respecto al contenedor padre */
+    width: 220px;  /* Tamaño del círculo */
+    height: 220px;  /* Tamaño del círculo */
+    border-radius: 999px;  /* Convierte el elemento en un círculo */
+    background: radial-gradient(circle, rgba(245,158,11,0.2), transparent); /* Gradiente radial con efecto de brillo suave */
     left: -60px;
     bottom: -80px;
-    animation: float 25s infinite ease-in-out reverse;
+    animation: float 25s infinite ease-in-out reverse; /* Animación flotante continua durante 25 segundos */
 }
 
-@keyframes float {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(20px, 20px) rotate(5deg); }
+/* Define la animación llamada "float" */
+@keyframes float { 
+    /* Estado inicial (0%) y final (100%) de la animación */
+    0%, 100% { transform: translate(0, 0) rotate(0deg); } /* Sin desplazamiento ni rotación */
+    50% { transform: translate(20px, 20px) rotate(5deg); } /* Estado intermedio de la animación */
+    /* Desplaza el elemento 20px a la derecha y 20px hacia abajo,
+           además lo rota 5 grados */
 }
 
+/* Estilos base para las tarjetas de productos */
 .card-product {
-    border: 0;
-    border-radius: 1.2rem;
-    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.12);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    background: linear-gradient(180deg, #ffffff 0%, #fff7ed 100%);
-    border-top: 3px solid var(--brand-primary);
+    border: 0; /* Elimina cualquier borde predeterminado */
+    border-radius: 1.2rem; /* Redondea las esquinas de la tarjeta */
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.12); /* Agrega una sombra suave para dar efecto de profundidad */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Aplica una transición suave a todos los cambios de propiedades */
+    overflow: hidden; /* Oculta el contenido que sobresalga de los bordes */
+    background: linear-gradient(180deg, #ffffff 0%, #fff7ed 100%); /* Fondo con degradado vertical de blanco a un tono crema claro */
+    border-top: 3px solid var(--brand-primary); 
 }
 
+/* Estilos aplicados cuando el cursor pasa sobre la tarjeta */
 .card-product:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
-    border-top-color: var(--brand-secondary);
+    transform: translateY(-8px) scale(1.02); /* Eleva ligeramente la tarjeta y la aumenta un poco de tamaño */
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18); /* Incrementa la sombra para resaltar el efecto de elevación */
+    border-top-color: var(--brand-secondary); /* Cambia el color del borde superior al color secundario de la marca */
 }
 
+/* Selector de la imagen del producto */
 .product-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    background: linear-gradient(135deg, #fed7aa, #fdba74);
-    transition: transform 0.5s ease;
+    width: 100%;  /* Hace que la imagen ocupe el 100% del ancho del contenedor */
+    height: 180px; /* Establece una altura fija de 180 píxeles */
+    object-fit: cover; /* Ajusta la imagen para cubrir todo el espacio disponible
+       sin deformarse, recortando si es necesario */
+    background: linear-gradient(135deg, #fed7aa, #fdba74); /* Aplica un fondo degradado diagonal de color naranja claro */
+    transition: transform 0.5s ease;  /* Aplica una transición suave al transformar la imagen */
 }
 
+/* Selector que se activa cuando el cursor pasa sobre la tarjeta
+   y afecta a la imagen del producto */
 .card-product:hover .product-image {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Aumenta el tamaño de la imagen en un 5% */
 }
 
+/* Selector de la etiqueta o cápsula que muestra el precio */
 .price-pill {
+    /* Aplica un fondo degradado diagonal utilizando
+       el color principal de la marca y un tono naranja */
     background: linear-gradient(135deg, var(--brand-primary), #ea580c);
-    color: #ffffff;
-    font-weight: 800;
-    border-radius: 999px;
-    padding: 0.4rem 1rem;
-    box-shadow: 0 4px 10px rgba(194, 65, 12, 0.35);
-    font-size: 1.05rem;
+    color: #ffffff; /* Define el color del texto en blanco */
+    font-weight: 800; /* Establece un grosor de fuente muy destacado */
+    border-radius: 999px; /* Redondea completamente los bordes para formar una cápsula */
+    padding: 0.4rem 1rem; /* Agrega espacio interno: 0.4rem arriba y abajo, 1rem a los lados */
+    box-shadow: 0 4px 10px rgba(194, 65, 12, 0.35); /* Agrega una sombra para resaltar la etiqueta */
+    font-size: 1.05rem; /* Define el tamaño de la fuente */
 }
 
+/* Selector de la cápsula que muestra la información de stock */
 .stock-pill {
-    font-size: 0.85rem;
-    border-radius: 999px;
-    padding: 0.35rem 0.85rem;
-    font-weight: 600;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem; /* Define el tamaño de la fuente en 0.85 rem */
+    border-radius: 999px; /* Redondea completamente los bordes para crear una forma de píldora */
+    padding: 0.35rem 0.85rem; /* Agrega espacio interno:0.35rem arriba y abajo, 0.85rem izquierda y derecha */
+    font-weight: 600; /* Establece el grosor de la fuente en seminegrita */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave para dar profundidad al elemento */
 }
-
+/* Selector para las insignias (badges) con estilo de éxito */
 .badge.text-bg-success {
     background: linear-gradient(135deg, var(--brand-success), #d97706);
+    /* Aplica un fondo degradado usando el color de éxito de la marca
+   y un tono naranja oscuro */
 }
-
-.badge.text-bg-warning {
+/* Selector para las insignias (badges) con estilo de advertencia */
+.badge.text-bg-warning { 
+/* Aplica un fondo degradado usando el color de advertencia
+   y un tono amarillo claro */
     background: linear-gradient(135deg, var(--brand-warning), #fbbf24);
-    color: #1e293b;
+    color: #1e293b; /* Define el color del texto en azul oscuro para mejorar la legibilidad */
 }
-
+/* Selector para las insignias (badges) con estilo de peligro */
 .badge.text-bg-danger {
+    /* Aplica un fondo degradado usando el color de peligro de la marca
+   y un tono rojo intenso */
     background: linear-gradient(135deg, var(--brand-danger), #ef4444);
 }
-
+/* Inicio del selector para las insignias de información */
 .badge.text-bg-info {
+/* Propiedad que aplica un fondo degradado utilizando
+   el color informativo de la marca y un tono naranja */
     background: linear-gradient(135deg, var(--brand-info), #f97316);
 }
-
+/* Inicio del selector para la tarjeta que contiene tablas */
 .table-card {
-    background: #ffffff;
-    border-radius: 1.2rem;
-    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
-    overflow: hidden;
-    border-top: 4px solid var(--brand-primary);
+    background: #ffffff; /* Propiedad que establece el color de fondo blanco */
+    border-radius: 1.2rem; /* Propiedad que redondea las esquinas de la tarjeta */
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1); /* Propiedad que agrega una sombra para dar profundidad */
+    overflow: hidden; /* Propiedad que oculta el contenido que sobresale del contenedor */
+    border-top: 4px solid var(--brand-primary);/* Propiedad que agrega un borde superior de 4 píxeles
+   utilizando el color principal de la marca */
 }
-
+/* Inicio del selector para la tarjeta de formularios */
 .form-card {
+    /* Propiedad que aplica un fondo degradado vertical
+   desde blanco hasta un tono crema claro */
     background: linear-gradient(180deg, #ffffff 0%, #fff7ed 100%);
-    border-radius: 1.2rem;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-    border-left: 4px solid var(--brand-secondary);
+    border-radius: 1.2rem; /* Propiedad que redondea las esquinas de la tarjeta */
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12); /* Propiedad que agrega una sombra para generar profundidad visual */
+    border-left: 4px solid var(--brand-secondary); /* Propiedad que agrega un borde izquierdo de 4 píxeles
+   utilizando el color secundario de la marca */
 }
-
+/* Comentario: Inicio del selector para el contenedor de control de cantidad */
 .qty-control {
-    display: inline-flex;
-    gap: 0.35rem;
-    align-items: center;
+    display: inline-flex; /* Comentario: Define la propiedad display */ 
+    /* Comentario inline-flex: Muestra los elementos en línea utilizando Flexbox */
+    gap: 0.35rem; /* Comentario: Define la propiedad gap */ 
+    /* Comentario:(0.35) Espacio entre los elementos internos */
+    align-items: center; /* Comentario: Define la propiedad align-items */
 }
-
+/* Comentario: Inicio del selector para los campos input dentro de .qty-control */
 .qty-control input {
-    width: 70px;
-    text-align: center;
+    width: 70px; /* Comentario: Define la propiedad width */ /* Comentario: Establece el ancho del campo de entrada (70px) */
+    text-align: center; /* Comentario: Define la propiedad text-align */
+    /* Comentario: Centra horizontalmente el texto dentro del campo */
 }
-
+/* Comentario: Inicio del selector para el bloque motivacional */
 .motivator {
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-    border-left: 5px solid var(--brand-secondary);
-    border-radius: 0.8rem;
-    box-shadow: 0 6px 15px rgba(245, 158, 11, 0.15);
-}
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); /* Comentario: Define la propiedad background */
+    /* Comentario:(linear-gradient) Crea un degradado lineal diagonal */
+    /* comentario: Ángulo del degradado (135deg)*/ 
+    border-left: 5px solid var(--brand-secondary); /* Comentario: Define la propiedad border-left */
+    border-radius: 0.8rem; /* Comentario: Define la propiedad border-radius *//* Comentario: Redondea las esquinas del contenedor (0.8rem */
+    box-shadow: 0 6px 15px rgba(245, 158, 11, 0.15); /* Comentario: Define la propiedad box-shadow */
+  /* Comentario: Desplazamiento horizontal de la sombra (0)*/
+  /* Comentario: Desplazamiento vertical de la sombra (6px)*/
+  /* Comentario: Nivel de desenfoque de la sombra (15px)*/
+  /* Comentario: Color de la sombra con transparencia rgba(245, 158, 11, 0.15)*/
 
+}
+/* Comentario: Selector para los encabezados h2 dentro del contenedor .motivator */
 .motivator h2 {
-    color: var(--brand-primary);
-    font-weight: 800;
+/* Comentario: Define el color del texto utilizando el color principal de la marca */
+color: var(--brand-primary);
+/* Comentario: Establece el grosor de la fuente en extra negrita */
+font-weight: 800;
+/* Comentario: Cierre del bloque .motivator h2 */
+
 }
 
+/* Comentario: Selector para los botones del carrito */
 .cart-btn {
-    width: 44px;
-    height: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
+   /* Comentario: Define un ancho fijo de 44 píxeles */
+width: 44px;
+    /* Comentario: Define una altura fija de 38 píxeles */
+height: 38px;
+    /* Comentario: Muestra el elemento como un contenedor flex en línea */
+display: inline-flex;
+   /* Comentario: Centra verticalmente el contenido interno */
+align-items: center;
+    /* Comentario: Centra horizontalmente el contenido interno */
+justify-content: center; /* Comentario: Centra horizontalmente el contenido interno */
+    border-radius: 0.75rem; /* Comentario: Redondea las esquinas del botón */
     background: linear-gradient(135deg, #ffffff, #fff7ed);
-    transition: all 0.3s ease;
+    /* Comentario: Aplica un fondo con degradado lineal diagonal */
+    transition: all 0.3s ease; /* Comentario: Agrega una transición suave para todos los cambios de propiedades */
 }
 
+/* Comentario: Selector que se activa cuando el cursor pasa sobre el botón */
 .cart-btn:hover {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, var(--brand-secondary), #fbbf24);
+/* Comentario: Aumenta el tamaño del botón un 10% */
+transform: scale(1.1);
+/* Comentario: Cambia el fondo a un degradado con el color secundario de la marca */
+background: linear-gradient(135deg, var(--brand-secondary), #fbbf24);
+/* Comentario: Cierre del bloque .cart-btn:hover */
 }
 
 .cart-btn svg {
     stroke-width: 2.2;
     color: var(--brand-primary);
 }
-
+/* Comentario: Inicio del selector para la insignia del carrito */
 .cart-badge {
-    background: linear-gradient(135deg, var(--brand-danger), #ef4444);
-    color: #ffffff;
-    min-width: 22px;
-    height: 22px;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    line-height: 22px;
-    padding: 0;
-    border: 2px solid #ffffff;
-    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.5);
-    font-weight: 700;
+/* Comentario: Propiedad que define el fondo de la insignia */
+background:
+/* Comentario: Función que crea un degradado lineal */
+linear-gradient(
+/* Comentario: Ángulo de dirección del degradado */
+135deg,
+/* Comentario: Variable CSS que contiene el color de peligro */
+var(--brand-danger),
+/* Comentario: Segundo color del degradado */
+#ef4444
+/* Comentario: Fin de la función linear-gradient */
+);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color blanco */
+#ffffff;
+/* Comentario: Propiedad que define el ancho mínimo */
+min-width:
+/* Comentario: Ancho mínimo de la insignia */
+22px;
+/* Comentario: Propiedad que define la altura */
+height:
+/* Comentario: Altura fija de la insignia */
+22px;
+/* Comentario: Propiedad que redondea completamente los bordes */
+border-radius:
+/* Comentario: Valor que crea una forma circular */
+999px;
+/* Comentario: Propiedad que define el tamaño de la fuente */
+font-size:
+/* Comentario: Tamaño del texto */
+0.75rem;
+/* Comentario: Propiedad que define la altura de línea */
+line-height:
+/* Comentario: Centra verticalmente el texto */
+22px;
+/* Comentario: Propiedad que define el espacio interno */
+padding:
+/* Comentario: Sin espacio interno */
+0;
+/* Comentario: Propiedad que define el borde */
+border:
+/* Comentario: Grosor del borde */
+2px
+/* Comentario: Tipo de borde */
+solid
+/* Comentario: Color del borde */
+#ffffff;
+/* Comentario: Propiedad que agrega sombra */
+box-shadow:
+/* Comentario: Desplazamiento horizontal */
+0
+/* Comentario: Desplazamiento vertical */
+6px
+/* Comentario: Desenfoque */
+15px
+/* Comentario: Color de la sombra con transparencia */
+rgba(220, 38, 38, 0.5);
+/* Comentario: Propiedad que define el grosor de la fuente */
+font-weight:
+/* Comentario: Fuente en negrita */
+700;
+/* Comentario: Fin del selector .cart-badge */
 }
-
+/* Comentario: Inicio del selector para botones primarios */
 .btn-primary {
-    background: linear-gradient(135deg, var(--brand-primary), #ea580c);
-    border: none;
-    font-weight: 600;
+
+/* Comentario: Propiedad que define el fondo */
+background:
+
+/* Comentario: Degradado lineal */
+linear-gradient(
+
+/* Comentario: Dirección del degradado */
+135deg,
+/* Comentario: Color principal de la marca */
+var(--brand-primary),
+/* Comentario: Segundo color del degradado */
+#ea580c
+/* Comentario: Fin del degradado */
+);
+/* Comentario: Propiedad que elimina el borde */
+border:
+/* Comentario: Sin borde */
+none;
+/* Comentario: Propiedad que define el grosor de la fuente */
+font-weight:
+/* Comentario: Fuente seminegrita */
+600;
+/* Comentario: Fin del selector .btn-primary */
 }
 
+/* Comentario: Inicio del selector cuando el cursor pasa sobre .btn-primary */
 .btn-primary:hover {
-    background: linear-gradient(135deg, #ea580c, var(--brand-primary));
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(194, 65, 12, 0.4);
+
+/* Comentario: Propiedad que cambia el fondo */
+background:
+
+/* Comentario: Degradado lineal invertido */
+linear-gradient(
+
+/* Comentario: Dirección del degradado */
+135deg,
+
+/* Comentario: Primer color */
+#ea580c,
+
+/* Comentario: Segundo color */
+var(--brand-primary)
+
+/* Comentario: Fin del degradado */
+);
+
+/* Comentario: Propiedad que aplica una transformación */
+transform:
+
+/* Comentario: Mueve el botón 2px hacia arriba */
+translateY(-2px);
+
+/* Comentario: Propiedad que agrega una sombra */
+box-shadow:
+
+/* Comentario: Desplazamiento horizontal */
+0
+
+/* Comentario: Desplazamiento vertical */
+8px
+
+/* Comentario: Desenfoque */
+20px
+
+/* Comentario: Color de la sombra */
+rgba(194, 65, 12, 0.4);
+
+/* Comentario: Fin del selector .btn-primary:hover */
+
 }
 
+/* Comentario: Inicio del selector para botones de advertencia */
 .btn-warning {
-    background: linear-gradient(135deg, var(--brand-secondary), #fbbf24);
-    border: none;
-    font-weight: 700;
-    color: #fff;
+
+/* Comentario: Propiedad que define el fondo */
+background:
+
+/* Comentario: Degradado lineal */
+linear-gradient(
+
+/* Comentario: Dirección del degradado */
+135deg,
+
+/* Comentario: Color secundario de la marca */
+var(--brand-secondary),
+
+/* Comentario: Segundo color del degradado */
+#fbbf24
+
+/* Comentario: Fin del degradado */
+);
+
+/* Comentario: Propiedad que elimina el borde */
+border:
+
+/* Comentario: Sin borde */
+none;
+
+/* Comentario: Propiedad que define el grosor de la fuente */
+font-weight:
+
+/* Comentario: Fuente en negrita */
+700;
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Texto en color blanco */
+#fff;
+/* Comentario: Fin del selector .btn-warning */
 }
 
+/* Comentario: Selector que se activa cuando el cursor pasa sobre un botón con la clase .btn-warning */
 .btn-warning:hover {
+    /* Comentario: Cambia el fondo del botón por un degradado lineal */
     background: linear-gradient(135deg, #fbbf24, var(--brand-secondary));
+    /* Comentario: Desplaza el botón 2 píxeles hacia arriba */
     transform: translateY(-2px);
+    /* Comentario: Agrega una sombra para resaltar el efecto hover */
     box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+    /* Comentario: Mantiene el color del texto en blanco */
     color: #fff;
 }
 
+/* Comentario: Selector para botones de éxito */
 .btn-success {
+    /* Comentario: Aplica un fondo con degradado lineal usando el color de éxito */
     background: linear-gradient(135deg, var(--brand-success), #d97706);
+    /* Comentario: Elimina cualquier borde predeterminado */
     border: none;
 }
 
+/* Comentario: Selector que se activa cuando el cursor pasa sobre un botón .btn-success */
 .btn-success:hover {
+    /* Comentario: Invierte el orden de los colores del degradado */
     background: linear-gradient(135deg, #d97706, var(--brand-success));
+    /* Comentario: Desplaza el botón 2 píxeles hacia arriba */
     transform: translateY(-2px);
 }
 
+/* Comentario: Selector para botones con estilo de borde principal */
 .btn-outline-primary {
+    /* Comentario: Agrega un borde sólido de 2 píxeles usando el color principal */
     border: 2px solid var(--brand-primary);
+    /* Comentario: Define el color del texto con el color principal */
     color: var(--brand-primary);
+    /* Comentario: Establece el grosor de la fuente en seminegrita */
     font-weight: 600;
 }
 
+/* Comentario: Inicio del selector para el estado hover de .btn-outline-primary */
 .btn-outline-primary:hover {
-    background: var(--brand-primary);
-    color: #fff;
-    transform: translateY(-2px);
+/* Comentario: Propiedad que define el fondo del botón */
+background:
+/* Comentario: Utiliza el color principal definido en la variable CSS */
+var(--brand-primary);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color blanco */
+#fff;
+/* Comentario: Propiedad que aplica una transformación */
+transform:
+/* Comentario: Mueve el botón 2 píxeles hacia arriba */
+translateY(-2px);
 }
 
+/* Comentario: Inicio del selector para botones con borde de advertencia */
 .btn-outline-warning {
-    border: 2px solid var(--brand-secondary);
-    color: var(--brand-secondary);
-    font-weight: 600;
+/* Comentario: Propiedad que define el borde */
+border
+/* Comentario: Grosor del borde */
+2px
+/* Comentario: Tipo de borde */
+solid
+/* Comentario: Color secundario definido en una variable CSS */
+var(--brand-secondary);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Utiliza el color secundario de la marca */
+var(--brand-secondary);
+/* Comentario: Propiedad que define el grosor de la fuente */
+font-weight:
+/* Comentario: Valor seminegrita */
+600;
+
 }
 
+/* Comentario: Inicio del selector para el estado hover de .btn-outline-warning */
 .btn-outline-warning:hover {
-    background: var(--brand-secondary);
-    color: #fff;
-    transform: translateY(-2px);
+/* Comentario: Propiedad que define el fondo */
+background:
+/* Comentario: Utiliza el color secundario de la marca */
+var(--brand-secondary);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color blanco */
+#fff;
+/* Comentario: Propiedad que aplica una transformación */
+transform:
+/* Comentario: Mueve el botón 2 píxeles hacia arriba */
+translateY(-2px);
+
 }
 
+/* Comentario: Inicio del selector base para todas las alertas */
 .alert {
-    border-radius: 0.8rem;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+/* Comentario: Propiedad que redondea las esquinas */
+border-radius:
+/* Comentario: Valor del radio de redondeo */
+0.8rem;
+/* Comentario: Propiedad que define el borde */
+border:
+/* Comentario: Elimina cualquier borde */
+none;
+/* Comentario: Propiedad que agrega una sombra */
+box-shadow:
+/* Comentario: Desplazamiento horizontal de la sombra */
+0
+/* Comentario: Desplazamiento vertical de la sombra */
+4px
+/* Comentario: Nivel de desenfoque */
+12px
+/* Comentario: Color de la sombra con transparencia */
+rgba(0, 0, 0, 0.08);
+
 }
 
+/* Comentario: Inicio del selector para alertas de éxito */
 .alert-success {
-    background: linear-gradient(135deg, #ffedd5, #fed7aa);
-    color: #9a3412;
+/* Comentario: Propiedad que define el fondo */
+background:
+/* Comentario: Degradado lineal de color naranja claro */
+linear-gradient(135deg, #ffedd5, #fed7aa);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color marrón oscuro */
+#9a3412;
 }
 
+/* Comentario: Inicio del selector para alertas de peligro */
 .alert-danger {
-    background: linear-gradient(135deg, #fee2e2, #fecaca);
-    color: #991b1b;
-}
+/* Comentario: Propiedad que define el fondo */
+background:
+/* Comentario: Degradado lineal de tonos rojos claros */
+linear-gradient(135deg, #fee2e2, #fecaca);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color rojo oscuro */
+#991b1b;
 
+}
+/* Comentario: Selector para alertas de advertencia */
 .alert-warning {
-    background: linear-gradient(135deg, #ffedd5, #fed7aa);
-    color: #9a3412;
+/* Comentario: Propiedad que define el fondo */
+background:
+/* Comentario: Degradado lineal entre tonos naranja claro */
+linear-gradient(135deg, #ffedd5, #fed7aa);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color marrón oscuro */
+#9a3412;
 }
 
+/* Comentario: Selector para alertas informativas */
 .alert-info {
-    background: linear-gradient(135deg, #fed7aa, #fdba74);
-    color: #9a3412;
+/* Comentario: Propiedad que define el fondo */
+background:
+/* Comentario: Degradado lineal entre tonos naranja */
+linear-gradient(135deg, #fed7aa, #fdba74);
+/* Comentario: Propiedad que define el color del texto */
+color:
+/* Comentario: Color marrón oscuro */
+#9a3412;
 }
 
+/* Comentario: Inicio de la Media Query para dispositivos con ancho máximo de 576 píxeles */
 @media (max-width: 576px) {
-    .cart-btn {
-        width: 38px;
-        height: 32px;
+/* Comentario: Selector para los botones del carrito en pantallas pequeñas */
+.cart-btn {
+/* Comentario: Propiedad que define el ancho del botón */
+width:
+/* Comentario: Ancho de 38 píxeles */
+38px;
+/* Comentario: Propiedad que define la altura del botón */
+height:
+/* Comentario: Altura de 32 píxeles */
+32px;
     }
 
-    .cart-badge {
-        min-width: 18px;
-        height: 18px;
-        line-height: 18px;
-        font-size: 0.7rem;
+    /* Comentario: Selector para la insignia del carrito en pantallas pequeñas */
+.cart-badge {
+/* Comentario: Propiedad que define el ancho mínimo */
+min-width:
+/* Comentario: Ancho mínimo de 18 píxeles */
+18px;
+/* Comentario: Propiedad que define la altura */
+height:
+/* Comentario: Altura de 18 píxeles */
+18px;
+/* Comentario: Propiedad que define la altura de línea */
+line-height:
+/* Comentario: Altura de línea de 18 píxeles para centrar el texto verticalmente */
+18px;
+/* Comentario: Propiedad que define el tamaño de la fuente */
+font-size:
+/* Comentario: Tamaño de fuente de 0.7 rem */
+0.7rem;
+/* Comentario: Fin del selector .cart-badge */
     }
 
-    .hero-header {
-        text-align: center;
-        padding: 1.5rem 1rem;
+   /* Comentario: Selector para el encabezado principal en pantallas pequeñas */
+.hero-header {
+/* Comentario: Propiedad que define la alineación del texto */
+text-align:
+/* Comentario: Centra el texto horizontalmente */
+center;
+/* Comentario: Propiedad que define el espacio interno */
+padding:
+/* Comentario: Espacio superior e inferior de 1.5rem,
+   e izquierdo y derecho de 1rem */
+1.5rem 1rem;
+/* Comentario: Fin del selector .hero-header */
     }
 
-    .hero-header h1 {
-        font-size: 1.5rem;
-    }
+   /* Comentario: Selector para los títulos h1 dentro de .hero-header */
+.hero-header h1 {
+/* Comentario: Propiedad que define el tamaño de la fuente */
+font-size:
+/* Comentario: Tamaño de fuente de 1.5rem */
+1.5rem;
+/* Comentario: Fin del selector .hero-header h1 */
+}
+/* Comentario: Fin de la Media Query */
 }
