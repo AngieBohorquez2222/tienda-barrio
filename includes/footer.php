@@ -1,7 +1,7 @@
-php<?php
-// Abre la etiqueta PHP para realizar anotaciones o procesamiento del lado del servidor
+<?php
 // Cierre del contenido principal (main)
 ?>
+</main>
 
 <!-- Etiqueta semántica que define el pie de página de la web con espaciado vertical, texto centrado, color atenuado, fuente pequeña y borde superior -->
 <footer class="py-4 text-center text-muted small border-top">

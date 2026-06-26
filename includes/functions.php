@@ -200,24 +200,23 @@ function send_whatsapp_notification(int $pedidoId, string $estadoNuevo, string $
     try {
         // Prepara una sentencia SQL estructurada para insertar los detalles de la notificación de manera segura contra inyecciones SQL
         $insertNotif = $pdo->prepare(
-//Usa el código con precaución.
-'INSERT INTO notificaciones (pedido_id, tipo, estado_anterior, estado_nuevo, telefono, mensaje, enviado) VALUES (?, ?, ?, ?, ?, ?, ?)'
-);
-// Ejecuta la consulta SQL pasando los parámetros dinámicos requeridos en el mismo orden de los signos de interrogación
-$insertNotif->execute([$pedidoId, 'whatsapp', $estadoAnterior, $estadoNuevo, $telefono, $mensaje, false]);
-// Obtiene el identificador numérico (ID auto-incremental) asignado al nuevo registro insertado en la base de datos
-$notifId = (int) $pdo->lastInsertId();
-// [Área de desarrollo futuro]: Espacio reservado para integrar un SDK externo (Twilio, Baileys, etc.) que comunique con la API de WhatsApp
-// Se ejecuta una consulta de actualización para cambiar el estado de la notificación a verdadero (enviado = true) simulando éxito total
-$update = $pdo->prepare('UPDATE notificaciones SET enviado = ? WHERE id = ?');
-// Transmite los valores binarios (true) y el identificador de la fila para culminar el registro
-$update->execute([true, $notifId]);
-// Retorna verdadero confirmando que la lógica se procesó de punta a punta exitosamente
-return true;
-} catch (Throwable $e) {
-// En caso de que falle la base de datos, el query o falte una columna, atrapa la excepción y retorna falso para evitar la caída de la app
-return false;
-}
+            'INSERT INTO notificaciones (pedido_id, tipo, estado_anterior, estado_nuevo, telefono, mensaje, enviado) VALUES (?, ?, ?, ?, ?, ?, ?)'
+        );
+        // Ejecuta la consulta SQL pasando los parámetros dinámicos requeridos en el mismo orden de los signos de interrogante
+        $insertNotif->execute([$pedidoId, 'whatsapp', $estadoAnterior, $estadoNuevo, $telefono, $mensaje, false]);
+        // Obtiene el identificador numérico (ID auto-incremental) asignado al nuevo registro insertado en la base de datos
+        $notifId = (int) $pdo->lastInsertId();
+        // [Área de desarrollo futuro]: Espacio reservado para integrar un SDK externo (Twilio, Baileys, etc.) que comunique con la API de WhatsApp
+        // Se ejecuta una consulta de actualización para cambiar el estado de la notificación a verdadero (enviado = true) simulando éxito total
+        $update = $pdo->prepare('UPDATE notificaciones SET enviado = ? WHERE id = ?');
+        // Transmite los valores binarios (true) y el identificador de la fila para culminar el registro
+        $update->execute([true, $notifId]);
+        // Retorna verdadero confirmando que la lógica se procesó de punta a punta exitosamente
+        return true;
+    } catch (Throwable $e) {
+        // En caso de que falle la base de datos, el query o falte una columna, atrapa la excepción y retorna falso para evitar la caída de la app
+        return false;
+    }
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-
+// Activa el modo estricto de tipos para seguridad
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/header.php';

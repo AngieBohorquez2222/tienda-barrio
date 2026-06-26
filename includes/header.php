@@ -102,5 +102,6 @@ $cartCount = count($_SESSION['cart'] ?? []);
             <div class="alert alert-<?= htmlspecialchars($flash['type']) ?> shadow-sm"><?= htmlspecialchars($flash['message']) ?></div>
         <!-- Cierre de la condición IF del mensaje de alerta flash -->
         <?php endif; ?>
-Usa el código con precaución.
+    </main>
+
 
