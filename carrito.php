@@ -2,18 +2,12 @@
 // Activa el modo estricto de tipos para seguridad
 declare(strict_types=1);
 
-require_once __DIR__ . '/includes/header.php';
-
-// ============================================================
-// INICIALIZACIÓN DE VARIABLES
-// ============================================================
-
-$pdo = db(); // Conexión a la base de datos
-$cart = $_SESSION['cart'] ?? []; // Carrito en sesión: [producto_id => cantidad]
+// Incluye funciones auxiliares
+require_once __DIR__ . '/includes/functions.php';
 
 // Pre-rellena el form con datos del usuario logueado o con lo que
 // escribió antes en caso de error (guardado en sesión tras fallo).
-$checkoutForm = $_SESSION['checkout_form'] ?? [
+$checkoutForm = [
     'cliente_nombre' => is_user_logged_in() ? ($_SESSION['user']['nombre'] ?? '') : '',
     'cliente_telefono' => is_user_logged_in() ? ($_SESSION['user']['telefono'] ?? '') : '',
     'cliente_direccion' => is_user_logged_in() ? ($_SESSION['user']['direccion'] ?? '') : '',
@@ -24,6 +18,7 @@ $checkoutForm = $_SESSION['checkout_form'] ?? [
 // ============================================================
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pdo = db();
     $action = $_POST['action'] ?? '';
 
     // ------------------------------------------------------------
@@ -69,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ACCIÓN: finalizar compra (checkout)
     // ------------------------------------------------------------
     if ($action === 'checkout') {
+        $pdo = db();
         $cart = $_SESSION['cart'] ?? [];
         $clienteNombre = trim($_POST['cliente_nombre'] ?? '');
         $clienteTelefono = trim($_POST['cliente_telefono'] ?? '');
@@ -178,12 +174,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Incluye el header con navbar y estructura HTML básica (DESPUÉS del procesamiento)
+require_once __DIR__ . '/includes/header.php';
+
 // ============================================================
 // CONSTRUCCIÓN DE LA VISTA DEL CARRITO
 // Se recarga desde sesión (puede haber cambiado arriba) y se
 // consultan los datos actuales de cada producto en la BD.
 // ============================================================
 
+$pdo = db();
 $cart = $_SESSION['cart'] ?? [];
 $items = [];
 $total = 0.0;

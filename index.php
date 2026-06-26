@@ -2,11 +2,8 @@
 // Activa el modo estricto de tipos para seguridad
 declare(strict_types=1);
 
-// Incluye el header con navbar y apertura de HTML
-require_once __DIR__ . '/includes/header.php';
-
-// Obtiene conexión a la base de datos
-$pdo = db();
+// Incluye funciones auxiliares
+require_once __DIR__ . '/includes/functions.php';
 
 // Si se envía formulario para agregar producto al carrito
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cantidad = max(1, (int) ($_POST['cantidad'] ?? 1));
 
     // Busca el producto en BD para validar stock
+    $pdo = db();
     $stmt = $pdo->prepare('SELECT id, nombre, stock FROM productos WHERE id = ?');
     $stmt->execute([$productoId]);
     $producto = $stmt->fetch();
@@ -38,6 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     set_flash('success', 'Producto agregado al carrito.');
     redirect('/tienda-barrio/index.php');
 }
+
+// Incluye el header con navbar y apertura de HTML (DESPUÉS del procesamiento)
+require_once __DIR__ . '/includes/header.php';
+
+// Obtiene conexión a la base de datos
+$pdo = db();
 
 // Obtiene todos los productos ordenados por nombre
 $productos = $pdo->query('SELECT id, nombre, imagen, precio, stock FROM productos ORDER BY nombre')->fetchAll();
