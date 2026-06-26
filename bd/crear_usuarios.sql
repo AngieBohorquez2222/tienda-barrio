@@ -10,3 +10,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
   password VARCHAR(255) NOT NULL,
   creado_en TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Usuario de ejemplo (contraseña: cliente123)
+-- Para crear el hash correcto, ejecutar: INSERT INTO usuarios (usuario, nombre, email, telefono, direccion, password) VALUES
+-- ('cliente', 'Cliente Demo', 'cliente@tienda.com', '3001234567', 'Calle 1 # 2-3', '<hash_de_password>');

@@ -72,4 +72,4 @@ require_once __DIR__ . '/../includes/header.php';
     </small>
 </div>
 
-<?php require_once __DIR__ . '/../includes/footer.php';
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>
