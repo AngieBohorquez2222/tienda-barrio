@@ -40,12 +40,18 @@ function get_flash(): ?array
     return $flash;
 }
 
-// Redirige al navegador a una ruta específica del sitio y detiene la carga del script
+// Redirige al navegador a una ruta específica del sitio y detiene la ejecución
 function redirect(string $path): void
 {
-    // Envía un encabezado HTTP crudo al navegador indicando la nueva localización de destino
+    // Limpia cualquier contenido enviado antes del header para evitar errores
+    if (ob_get_length()) {
+        ob_clean();
+    }
+
+    // Envía la redirección al navegador
     header('Location: ' . $path);
-    // Detiene inmediatamente la ejecución de cualquier código posterior por seguridad
+
+    // Detiene la ejecución del script
     exit;
 }
 
