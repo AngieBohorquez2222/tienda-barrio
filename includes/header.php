@@ -45,11 +45,11 @@ $cartCount = count($_SESSION['cart'] ?? []);
                 <!-- Botón de estilo claro y tamaño pequeño que redirige a la página principal del catálogo -->
                 <a class="btn btn-light btn-sm" href="/tienda-barrio/index.php">Catalogo</a>
                 <!-- Botón con borde claro, tamaño pequeño y posición relativa que sirve como acceso directo al carrito de compras -->
-                ><a class="btn btn-outline-light btn-sm position-relative cart-btn" href="/tienda-barrio/carrito.php" title="Ver carrito" aria-label="Ver carrito de compras">
+                <a class="btn btn-outline-light btn-sm position-relative cart-btn" href="/tienda-barrio/carrito.php" title="Ver carrito" aria-label="Ver carrito de compras">
                     <!-- Dibuja un icono de carrito de compras mediante gráficos vectoriales SVG limpios -->
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <!-- Dibuja la rueda trasera del carrito de compras -->
-                        <circle cx="9" cy="21" r="1"></circle
+                        <circle cx="9" cy="21" r="1"></circle>
                         <!-- Dibuja la rueda delantera del carrito de compras -->
                         <circle cx="20" cy="21" r="1"></circle>
                         <!-- Dibuja las líneas que forman la canasta y el manubrio del carrito de compras -->
